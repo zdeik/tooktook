@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상담화면 - 톡톡 상담 지원 시스템</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container consultation-container">
+        <header class="app-header consultation-header">
+             <div class="header-left">
+                <span class="icon">🎧</span>
+                <span id="counselorNameDisplay">상담가: 톡톡</span>
+                <span class="separator">|</span>
+                <span>상담자: </span>
+            </div>
+            <div class="header-right">
+                <span class="icon">📅</span>
+                <span id="currentDate">날짜 2025/06/27</span>
+                <span class="separator">|</span>
+                <span class="icon">⏱️</span>
+                <span id="consultationTime">10:34</span>
+            </div>
+        </header>
+
+        <main class="consultation-main">
+            <div class="chat-panel">
+                <div class="chat-header">
+                    <button class="btn-chat-action">통화 내용</button>
+                </div>
+                <div class="chat-body">
+                    <img src="상담사툭툭이.png" alt="상담 캐릭터" class="character-icon-chat">
+                </div>
+            </div>
+            
+            <aside class="service-panel">
+                <div class="service-header">톡톡's Auto Service</div>
+                <div class="service-body">
+                    <p><strong>키워드 확인:</strong> 대기중</p>
+                </div>
+                <button id="endBtn" class="btn btn-danger">상담 종료</button>
+            </aside>
+
+        </main>
+    </div>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

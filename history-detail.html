@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상담 이력 상세 - 톡톡 상담 지원 시스템</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="history-detail"> 
+    <div class="container consultation-container">
+        <header class="app-header consultation-header" id="historyDetailHeader">
+             <div class="header-left">
+                <span class="icon" aria-hidden="true">👤</span>
+                <span id="historyClientName"></span>
+            </div>
+            <div class="header-right">
+                <span class="icon" aria-hidden="true">📅</span>
+                <span id="historyDate"></span>
+            </div>
+        </header>
+
+        <main class="consultation-main">
+            <div class="chat-log-panel">
+                </div>
+            <aside class="service-panel">
+                <div class="service-header">상담 요약 정보</div>
+                <div class="service-body" id="historySummaryPanel">
+                    </div>
+                <button id="backToListBtn" class="btn btn-primary">목록으로</button>
+            </aside>
+        </main>
+    </div>
+
+    <template id="chat-log-item-template">
+        <div class="chat-bubble">
+            <span class="speaker"></span>
+            <p class="message"></p>
+        </div>
+    </template>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
