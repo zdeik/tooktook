@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+*.ipynb
+# Data
+*.csv
+*.sql
