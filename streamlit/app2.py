@@ -30,7 +30,7 @@ def cons_cahrt2(consultants_df, consultations_df):
         range_y_min = max(0, min_duration - 1)
         range_y_max = max_duration + 1
 
-        # 차트 속성
+        #차트 속성
         pastel_colors = ["#AEC6CF", "#FFD1DC", "#BFD8B8", "#FFFACD", "#CBAACB", "#FFB347", "#77DD77", "#FDFD96"]
         fig = px.bar(
             data,
