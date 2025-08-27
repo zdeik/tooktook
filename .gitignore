@@ -1,3 +1,4 @@
+
 # Python
 __pycache__/
 *.pyc
@@ -8,7 +9,7 @@ venv/
 .env
 # Jupyter Notebook Checkpoints
 .ipynb_checkpoints/
-*.ipynb
 # Data
 *.csv
+>>>>>>> f33af947a1bb70f6e8bdc67a78a13169e7d55ace
 *.sql

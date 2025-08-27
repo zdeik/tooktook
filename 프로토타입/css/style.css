@@ -1,0 +1,715 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+/* ==========================================================================
+   1. 초기화 및 공통 유틸리티 (Reset & Common Utilities)
+   ========================================================================== */
+/* For Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    background-color: #eef1f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+}
+
+/* ==========================================================================
+   2. 공통 컴포넌트 (Common Components)
+   ========================================================================== */
+.container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1024px;
+    overflow: hidden;
+    height: 768px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #69b4a0;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    color: white;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.settings-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.app-header, .app-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.app-header {
+    border-bottom: 2px solid #eef1f5;
+}
+
+.app-footer {
+    border-top: 2px solid #eef1f5;
+}
+
+.header-left, .header-right, .footer-left, .footer-right {
+    display: flex;
+    align-items: center;
+}
+
+/* --- Swipe Toggle Switch Component --- */
+.swipe-toggle {
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s ease;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.swipe-knob {
+    width: 34px;
+    height: 34px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+}
+
+.toggle-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.swipe-toggle.off {
+    background-color: #d9534f;
+}
+.swipe-toggle.off .swipe-knob {
+    left: 4px;
+}
+
+.swipe-toggle.on {
+    background-color: #337ab7;
+}
+.swipe-toggle.on .swipe-knob {
+    left: 82px;
+}
+
+
+/* ==========================================================================
+   3. 페이지별 레이아웃 (Layout by Page)
+   ========================================================================== */
+
+/* --- 로그인 화면 (index.html) --- */
+.login-container {
+    max-width: 500px;
+    padding: 60px;
+    text-align: center;
+    margin: auto;
+    height: auto;
+}
+.character-icon {
+    width: 100px;
+    margin-bottom: 20px;
+}
+.subtitle {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 40px;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+.input-group input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+.error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 15px;
+    visibility: hidden;
+}
+
+/* --- 대기 화면 (waiting.html) --- */
+.waiting-container {
+    background-color: #f7f9fa;
+}
+.waiting-header .date-info {
+    margin-right: 20px;
+}
+.waiting-header .memo-title {
+    background-color: #69b4a0;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+.waiting-main-redesigned {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 20px;
+    padding: 20px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+.history-section, .memo-section {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.section-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    background-color: #69b4a0;
+}
+.section-header input#searchInput {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-left: 10px;
+    flex-grow: 1;
+    outline: none;
+    color: #333;
+}
+.section-header .icon {
+    color: white;
+}
+.section-header .calendar-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 18px;
+}
+.history-list-header {
+    display: flex;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+.history-client {
+    flex: 1;
+    text-align: center;
+}
+.history-summary {
+    flex: 2;
+    text-align: center;
+}
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+.history-list li {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+}
+.history-list li:last-child {
+    border-bottom: none;
+}
+.memo-section {
+    position: relative;
+}
+.memo-area {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+.memo-character {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    width: 100px;
+}
+.character-icon-small {
+    height: 40px;
+}
+.settings-icon {
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+/* [추가] 상담가 메모 영역 스타일 */
+.memo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #69b4a0;
+    color: white;
+    font-weight: 500;
+    border-radius: 8px 8px 0 0;
+}
+
+.btn-save-memo {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-save-memo:hover {
+    background-color: white;
+    color: #69b4a0;
+}
+
+#memoArea { /* 기존 memo-area ID에 패딩 제거 */
+    padding: 0;
+}
+
+.memo-textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none; /* 사용자가 크기 조절 못하게 함 */
+    padding: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box; /* 패딩이 영역 안으로 계산되도록 함 */
+    outline: none;
+}
+
+
+/* --- 상담 화면 (consultation.html) --- */
+.consultation-header .separator {
+    margin: 0 10px;
+    color: #ccc;
+}
+.consultation-main {
+    flex-grow: 1;
+    display: flex;
+    padding: 0;
+}
+.chat-panel {
+    flex-grow: 1;
+    border-right: 2px solid #eef1f5;
+    display: flex;
+    flex-direction: column;
+}
+.chat-header {
+    padding: 15px;
+    border-bottom: 2px solid #eef1f5;
+}
+.btn-chat-action {
+    background-color: #69b4a0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.chat-body {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f9fa;
+}
+.character-icon-chat {
+    width: 200px;
+}
+.service-panel { /* In HTML, this is <aside> */
+    width: 320px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.service-header {
+    background-color: #69b4a0;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.service-body {
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 1.8;
+}
+.service-body p {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   4. 상태 스타일 (State Styles)
+   ========================================================================== */
+
+/* --- Hover States --- */
+.btn-primary:hover {
+    background-color: #58a390;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+/* [피드백 추가] 상담 이력 목록 아이템에 호버 효과 */
+.history-list li:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+
+/* --- Active States (클릭 시) --- */
+/* [피드백 추가] 모든 버튼에 대한 클릭 효과 */
+.btn:active,
+.btn-chat-action:active,
+.settings-button:active,
+.calendar-btn:active {
+    transform: scale(0.98); /* 살짝 작아지는 효과 */
+    filter: brightness(0.95); /* 살짝 어두워지는 효과 */
+}
+
+
+/* --- Focus States (키보드 접근) --- */
+:focus-visible {
+    outline: 3px solid #337ab7;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* --- Loading States --- */
+/* [피드백 추가] 로딩 상태의 버튼 스타일 */
+.btn.loading {
+    cursor: wait; /* 커서를 대기 상태로 변경 */
+}
+
+.btn.loading .btn-text {
+    visibility: hidden; /* 기존 텍스트 숨김 */
+}
+
+.btn.loading .spinner {
+    display: inline-block; /* 스피너 보이기 */
+}
+
+/* [피드백 추가] CSS 키프레임 스피너 애니메이션 */
+.spinner {
+    display: none; /* 평소엔 숨김 */
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px; /* (높이/2) */
+    margin-left: -10px; /* (너비/2) */
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- Empty States --- */
+.empty-state {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #aaa;
+    text-align: center;
+}
+.empty-state .empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+.history-section.is-empty .empty-state {
+    display: flex;
+}
+.history-section.is-empty .history-list-header {
+    border-bottom: none;
+}
+
+/* --- Page Transitions --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+.container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+.container.is-leaving {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+/* css/style.css 파일 맨 아래에 추가 */
+
+/* [추가] 동적으로 생성된 상담 이력 아이템 스타일 */
+.history-list-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.history-list-item:last-child {
+    border-bottom: none;
+}
+
+.history-list-item:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+/* css/style.css 파일 맨 아래에 추가 */
+
+/* --- History Detail Page Style --- */
+.chat-log-panel {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f7f9fa;
+    overflow-y: auto;
+    border-right: 2px solid #eef1f5;
+}
+
+.chat-bubble {
+    max-width: 70%;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    line-height: 1.5;
+}
+
+.chat-bubble .speaker {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.chat-bubble.user {
+    background-color: #e6f7ff;
+    margin-left: auto;
+    border-bottom-right-radius: 3px;
+}
+
+.chat-bubble.counselor {
+    background-color: #fff;
+    border: 1px solid #eee;
+    margin-right: auto;
+    border-bottom-left-radius: 3px;
+}
+
+/* --- Modal Component Style --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-overlay.is-hidden {
+    opacity: 0;
+    pointer-events: none; /* 숨겨졌을 때 클릭 안 되게 함 */
+}
+
+.modal {
+    background-color: white;
+    padding: 25px 30px;
+    cursor: pointer; /* [추가] 모달이 클릭 가능함을 암시 */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.modal-overlay.is-hidden .modal {
+    transform: scale(0.95);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 20px;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+}
+
+/* --- Dropdown Menu Component --- */
+/* 헤더 좌측 영역을 드롭다운의 위치 기준으로 설정 */
+.header-left {
+    position: relative;
+}
+
+/* 드롭다운을 여는 버튼 스타일 */
+.user-menu-btn {
+    background: none;
+    border: none;
+    padding: 5px;
+    margin: -5px; /* 패딩으로 늘어난 크기만큼 다시 줄여 원래 위치처럼 보이게 함 */
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.user-menu-btn .icon-arrow {
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+/* 드롭다운 패널 스타일 */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 160px;
+    z-index: 100;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+/* 드롭다운 메뉴 아이템 스타일 */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* 메뉴가 숨겨졌을 때의 스타일 */
+.dropdown-menu.is-hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
